@@ -90,6 +90,20 @@
 
   Coverage at the time of release: 74 slash commands, 43 built-in tools, MCP (stdio + SSE), real LSP routing (gopls/pyright/tsserver/rust-analyzer/clangd/jdtls/solargraph), real WebSearch (DuckDuckGo HTML), Anthropic `count_tokens` integration, hooks, plugins, sub-agents, autoCompact, autoDream, transcript JSONL, crash recovery, settings hot-reload, `!cmd` shell expansion, `@file` auto-attach, snapshot/undo/redo, 10 themes, vim mode, settings editor modal. Unit tests + GitHub Actions CI + GoReleaser cross-compile config included.
 
+  ## Releases
+
+  Pre-built binaries for Linux, macOS, and Windows (amd64 + arm64 except win/arm64) are published to the [Releases page](https://github.com/Lihfdgjr/claude-code-rev/releases) when a `v*` tag is pushed. To cut a release:
+
+  ```bash
+  cd go
+  go test ./...
+  cd ..
+  git tag v0.1.0
+  git push --tags
+  ```
+
+  GitHub Actions will run GoReleaser and create a **draft release** with checksums + per-platform archives. Edit/publish from the Releases page.
+
   ## License
 
   [PolyForm Noncommercial 1.0.0](LICENSE). Commercial use is prohibited. For commercial licensing, open a discussion.
@@ -176,6 +190,16 @@
   ```
 
   覆盖度：74 个斜杠命令、43 个内置工具、MCP（stdio + SSE）、真实 LSP 路由（gopls/pyright/tsserver/rust-analyzer/clangd/jdtls/solargraph）、真实 WebSearch（DuckDuckGo HTML）、Anthropic `count_tokens` 调用、hooks、插件、子 agent、autoCompact、autoDream、transcript JSONL、崩溃恢复、设置热重载、`!cmd` shell 展开、`@file` 自动挂、快照/撤销/重做、10 个主题、Vim 模式、设置编辑器 modal。带单元测试、GitHub Actions CI、GoReleaser 跨平台构建。
+
+  ## 发布
+
+  打 `v*` tag 后 GitHub Actions 会跨平台编译（linux / macOS / windows，amd64 + arm64）发到 [Releases 页面](https://github.com/Lihfdgjr/claude-code-rev/releases)，先以 draft 形式创建，手动 publish。
+
+  ```bash
+  cd go && go test ./... && cd ..
+  git tag v0.1.0
+  git push --tags
+  ```
 
   ## 许可
 

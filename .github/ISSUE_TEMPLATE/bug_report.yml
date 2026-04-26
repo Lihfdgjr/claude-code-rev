@@ -1,0 +1,70 @@
+name: Bug report
+description: Something is broken in the Go tree (`go/`).
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. Please fill out the sections below.
+        For TypeScript-tree issues, use the *General* template — that tree
+        is reverse-engineered and not actively supported.
+
+  - type: input
+    id: version
+    attributes:
+      label: claudecode-go version
+      description: Output of `claudecode version`
+      placeholder: "0.1.0-go"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Linux
+        - macOS
+        - Windows
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug. Include the exact error message if any.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: |
+        Minimal sequence that triggers the bug. Settings that matter:
+        - Model
+        - Tools / commands invoked
+        - MCP servers configured (if any)
+      placeholder: |
+        1. Run `claudecode`
+        2. Type `/...`
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant transcript / logs
+      description: Paste from `~/.claude/sessions/transcripts/<id>.jsonl` if applicable. Redact secrets first.
+      render: shell

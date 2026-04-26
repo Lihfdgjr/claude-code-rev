@@ -1,0 +1,47 @@
+name: Feature request
+description: Suggest a new tool, command, or capability for the Go tree.
+title: "[feat] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement. We're particularly interested in:
+        - New tools (Read/Edit/Bash style)
+        - New slash commands
+        - New language servers for the LSP router
+        - Hooks events not currently supported
+        - MCP transport improvements
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: What problem does this solve?
+      description: Describe the workflow gap or pain point.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: How should it work? CLI surface, config shape, behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Existing tools/commands that almost-but-not-quite cover this. Why aren't they enough?
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - "Single tool / command"
+        - "Subsystem (MCP, LSP, hooks, plugins, ...)"
+        - "Cross-cutting (UI, persistence, transport)"
+    validations:
+      required: true

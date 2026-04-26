@@ -1,6 +1,13 @@
 
 # Restored Claude Code Source
 
+[![CI](https://github.com/Lihfdgjr/claude-code-rev/actions/workflows/ci.yml/badge.svg)](https://github.com/Lihfdgjr/claude-code-rev/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/Lihfdgjr/claude-code-rev?display_name=tag&include_prereleases)](https://github.com/Lihfdgjr/claude-code-rev/releases)
+[![Go Reference](https://pkg.go.dev/badge/claudecode.svg)](https://github.com/Lihfdgjr/claude-code-rev/tree/main/go)
+[![Go version](https://img.shields.io/badge/Go-1.22+-00ADD8?logo=go)](go/go.mod)
+[![License](https://img.shields.io/badge/license-PolyForm%20NC%201.0.0-orange)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/Lihfdgjr/claude-code-rev?style=social)](https://github.com/Lihfdgjr/claude-code-rev/stargazers)
+
 
 ![Preview](preview.png)
 

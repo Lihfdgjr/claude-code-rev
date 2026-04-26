@@ -10,6 +10,17 @@
   It is not the original upstream repository state. Some files were unrecoverable from source maps and have been replaced with compatibility shims or degraded implementations so the
   project can install and run again.
 
+  > **Heads up:** the TypeScript tree is reverse-engineered from public source maps and is **not affiliated with or endorsed by Anthropic**. Trademarks belong to their owners. Released under [PolyForm Noncommercial 1.0.0](LICENSE) — non-commercial use only.
+
+  ## What's in here
+
+  | Path | What | Status |
+  |------|------|--------|
+  | `src/`, `shims/`, `vendor/`, etc. | Restored TypeScript tree | Mostly runnable; some modules are shims |
+  | `go/` | **Independent Go reimplementation** written from scratch | Compiles, tests green, ~23k LOC, 74 commands, 43 tools |
+
+  See [`go/README.md`](go/README.md) for the Go build. The Go tree shares zero code with the TS tree above and is the cleaner foundation for further work.
+
   ## Current status
 
   - The source tree is restorable and runnable in a local development workflow.
@@ -65,6 +76,27 @@
   ```bash
   bun run version
   ```
+
+  ## Go reimplementation
+
+  An independent Go implementation lives in `go/`. It was written from scratch — agents that produced it were explicitly forbidden from reading the TypeScript tree.
+
+  ```bash
+  cd go
+  go build -o bin/claudecode ./cmd/claudecode
+  go test ./...
+  ./bin/claudecode version
+  ```
+
+  Coverage at the time of release: 74 slash commands, 43 built-in tools, MCP (stdio + SSE), real LSP routing (gopls/pyright/tsserver/rust-analyzer/clangd/jdtls/solargraph), real WebSearch (DuckDuckGo HTML), Anthropic `count_tokens` integration, hooks, plugins, sub-agents, autoCompact, autoDream, transcript JSONL, crash recovery, settings hot-reload, `!cmd` shell expansion, `@file` auto-attach, snapshot/undo/redo, 10 themes, vim mode, settings editor modal. Unit tests + GitHub Actions CI + GoReleaser cross-compile config included.
+
+  ## License
+
+  [PolyForm Noncommercial 1.0.0](LICENSE). Commercial use is prohibited. For commercial licensing, open a discussion.
+
+  ## Contributing
+
+  See [CONTRIBUTING.md](CONTRIBUTING.md). Keep PRs scoped to one tree (TS or Go) — don't mix.
 
   ## 中文说明
 
@@ -131,3 +163,26 @@
   ```bash
   bun run version
   ```
+
+  ## Go 重写版
+
+  `go/` 子目录是从零写的独立 Go 实现，与 TS 树**零代码共享**（所有 agent 都被显式禁止读原 src/）。
+
+  ```bash
+  cd go
+  go build -o bin/claudecode ./cmd/claudecode
+  go test ./...
+  ./bin/claudecode version
+  ```
+
+  覆盖度：74 个斜杠命令、43 个内置工具、MCP（stdio + SSE）、真实 LSP 路由（gopls/pyright/tsserver/rust-analyzer/clangd/jdtls/solargraph）、真实 WebSearch（DuckDuckGo HTML）、Anthropic `count_tokens` 调用、hooks、插件、子 agent、autoCompact、autoDream、transcript JSONL、崩溃恢复、设置热重载、`!cmd` shell 展开、`@file` 自动挂、快照/撤销/重做、10 个主题、Vim 模式、设置编辑器 modal。带单元测试、GitHub Actions CI、GoReleaser 跨平台构建。
+
+  ## 许可
+
+  [PolyForm Noncommercial 1.0.0](LICENSE)。**禁止商用**。商用授权请开 issue 讨论。
+
+  ## 法律提示
+
+  - TS 树是从 source map 反推还原的，并非 Anthropic 官方上游，与 Anthropic 无关。"Claude" 等商标归原所有人所有。
+  - Go 树是从零独立编写。
+  - 两棵树都按 PolyForm Noncommercial 1.0.0 发布，仅供非商用。
